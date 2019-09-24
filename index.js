@@ -39,19 +39,20 @@ async function main() {
 
 function startkode(kodelistenavn) {
 	console.log('');
-	console.log('function get' + kodelistenavn + '(kode) {');
+	console.log('export function get' + kodelistenavn + '(kode) {');
 	console.log('\tswitch (kode) { ');
 }
 
 function casekode(kode, navn) {
 	let tal= /^\d+$/;
 	if (tal.exec(kode)) {		
-		console.log('\tcase ' + kode + ':');
+		console.log('\tcase ' + parseInt(kode, 10) + ':');
 	}	
 	else {		
 		console.log('\tcase "' + kode + '":');
 	}
-	console.log('\t\tnavn= "' + navn + '";');	
+	console.log('\t\tnavn= "' + navn.replace(/\r\n|\n|\r/g, " ").replace(/[ ]+/g, ' ') + '";');	
+	//console.log('\t\tnavn= "' + navn.split(/\r\n|\n|\r/).join("").replace(/[ ]+/g, ' ') + '";');	
 	console.log('\t\tbreak;');	
 }
 
